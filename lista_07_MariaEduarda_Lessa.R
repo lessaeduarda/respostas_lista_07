@@ -238,7 +238,7 @@ ggplot(data = vote_growth, aes(y = resid_reg_multi_2, x = GROWTH + WAR)) +
 
 # Modelo 3 (GROWTH e WAR): 
 0.628 * (sd(vote_growth$GROWTH)/ sd(vote_growth$VOTE))
--3.951 * sd(vote_growth$WAR) / (sd(vote_growth$VOTE))
+-3.951 * (sd(vote_growth$WAR) / sd(vote_growth$VOTE))
 
 
 # A variável que tem maior efeito sobre o percentual de votos no candidato do 
