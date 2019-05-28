@@ -12,7 +12,7 @@ output:
 
 # **Questão 1**:
 
-```{r}
+```{r, results='hide', warning=FALSE, message=FALSE}
 # Definir diretório:
 setwd("C:/Users/Duda/Desktop/PPGCP/Análise de Dados/lista_07")
 
@@ -44,7 +44,7 @@ summary(vote_growth)
 
 ## **letra b)**
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # Análise de regressão de VOTE (VD) e GROWTH (VI): 
 reg <- lm(VOTE ~ GROWTH, data = vote_growth)
 summary(reg)
@@ -64,7 +64,7 @@ ggplot(data = vote_growth, aes(y = VOTE, x = GROWTH)) +
 
 ### **ii)**
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # Imprimir resultados do modelo (tabela de regressão):
 summary(reg)
 
@@ -146,9 +146,8 @@ ggplot(data = vote_growth, aes(y = resid_reg, x = GROWTH)) +
 
 #### O modelo 1 parece ser homocedástico, já que a dispersão dos resíduos não parece diminuir ou aumentar com o aumento de X (GROWTH).
 
-# Analisar resíduos modelo 2:
-
 ```{r}
+# Analisar resíduos modelo 2:
 resid_reg_multi <- resid(reg_multi)
 mean(resid_reg_multi)
 
@@ -258,7 +257,7 @@ ggplot(data = vote_growth, aes(y = resid_reg_multi_2, x = GROWTH + WAR)) +
 
 ## **letra b)**
 
-#### A variável dependente é a "percepção temporal" dos cidadãos. Os autores buscam compreender se a língua falada influencia o apoio dos cidadãos às políticas _"future-oriented"_. Descobrem que nas línguas _"futureless"_ os eleitores têm uma percepção temporal diferente do que aqueles de línguas _"futured"_; os primeiros têm maior probabilidade de endossar as políticas de longo prazo, já que percebem o futuro como um "tempo" mais próximo do presente. No primeiro estudo, os autores avaliam o impacto de uma língua _"futureless"_ - o estoniano - e desenvolvem cinco modelos de análise, cada um com uma variável dependente diferente, mas todas com o mesmo objetivo de avaliar a "percepção temporal" dos eleitores. Neste estudo, os autores esperam encontrar maior coeficiente de variação para VDs que representem percepções de longo prazo, já que o estoniano, por ser uma língua _"futureless"_, faz com que os seus falantes tenham percepções menos imediatistas e mais voltadas para o futuro (e esperam encontrar o efeito contrário para o russo, que é a língua _"futured"_ avaliada neste primeiro estudo). No segundo estudo os autores expandem a análise para 60 países e incluem uma série de variáveis de controle, como gênero, idade, educação, renda, situação empregatícia, estado civil, apoio à democracia e capital social. As línguas são classificadas em _"futured"_ ou _"futureless"_ de acordo com a teoria de "future time reference" (FTR; Chen 2013) de uma língua, recebe valor 1 se fortemente _"futured"_ e 0 se fortemente _"futureless"_. Os autores desenvolvem seis modelos, os três primeiros têm como VD a probabilidade de os cidadãos apoiarem políticas que poupem o meio ambiente e os três últimos, a VD é a probabilidade de o indivíduo poupar dinheiro. Neste segundo estudo, os autores esperam um coeficiente de variação (^b) negativo para países com línguas consideradas _"futured"_, já que postulam que os cidadãos falantes destas línguas estão mais propensos a apoiar políticas de curto prazo. 
+#### A variável dependente é a "percepção temporal" e o apoio dos cidadãos a políticas _"future oriented"_. Os autores buscam compreender se a língua falada influencia o apoio dos cidadãos às políticas _"future-oriented"_. Descobrem que nas línguas _"futureless"_ os eleitores têm uma percepção temporal diferente do que aqueles de línguas _"futured"_; os primeiros têm maior probabilidade de endossar as políticas de longo prazo, já que percebem o futuro como um "tempo" mais próximo do presente. No primeiro estudo, os autores avaliam o impacto de uma língua _"futureless"_ - o estoniano - e desenvolvem cinco modelos de análise, cada um com uma variável dependente diferente, mas todas com o mesmo objetivo de avaliar a "percepção temporal" dos eleitores. Neste estudo, os autores esperam encontrar maior coeficiente de variação para VDs que representem percepções de longo prazo, já que o estoniano, por ser uma língua _"futureless"_, faz com que os seus falantes tenham percepções menos imediatistas e mais voltadas para o futuro (e esperam encontrar o efeito contrário para o russo, que é a língua _"futured"_ avaliada neste primeiro estudo). No segundo estudo os autores expandem a análise para 60 países e incluem uma série de variáveis de controle, como gênero, idade, educação, renda, situação empregatícia, estado civil, apoio à democracia e capital social. As línguas são classificadas em _"futured"_ ou _"futureless"_ de acordo com a teoria de "future time reference" (FTR; Chen 2013) de uma língua, recebe valor 1 se fortemente _"futured"_ e 0 se fortemente _"futureless"_. Os autores desenvolvem seis modelos, os três primeiros têm como VD a probabilidade de os cidadãos apoiarem políticas que poupem o meio ambiente e os três últimos, a VD é a probabilidade de o indivíduo poupar dinheiro. Neste segundo estudo, os autores esperam um coeficiente de variação (^b) negativo para países com línguas consideradas _"futured"_, já que postulam que os cidadãos falantes destas línguas estão mais propensos a apoiar políticas de curto prazo. Neste estudo, como as VDs são qualitativas dicotômicas, foram utilizadas as funções de ligação probit, para o primeiro estudo (com uma amostra reduzida) e logit para o segundo (com uma amostra de cerca de 60.000 respondentes); os resultados apresentados para o ^b, então, são expressos na forma de probabilidade. 
 
 
 ---
