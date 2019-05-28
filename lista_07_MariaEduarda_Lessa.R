@@ -1,4 +1,5 @@
 
+
 # Lista 07
 # Professor: Davi Moreira
 # Disciplina: Análise de Dados
@@ -50,6 +51,7 @@ ggplot(data = vote_growth, aes(y = VOTE, x = GROWTH)) +
 
 # Imprimir resultados do modelo (tabela de regressão):
 summary(reg)
+
 # Calcular RMSE: 
 require(magrittr)
 mean(residuals(reg)^2) %>% sqrt()
@@ -86,7 +88,7 @@ summary(reg_multi)
 cor(x = vote_growth$GOODNEWS, y = vote_growth$GROWTH, method = c("pearson"))
 
 # A variável adicionada ao modelo é a "GOODNEWS", que avalia o crescimento  
-# forte (ou acimo do esperado) em cada um dos trimestres da administração
+# forte (ou acima do esperado) em cada um dos trimestres da administração
 # do candidato incumbente. Estas boas performances da economia são consideradas
 # "boas notícias", já que tendem a influenciar o comportamento do eleitor, 
 # segundo estudos da psicologia política. A inclusão desta variável tem como 
@@ -98,6 +100,7 @@ cor(x = vote_growth$GOODNEWS, y = vote_growth$GROWTH, method = c("pearson"))
 
 # Imprimir resultados do modelo (tabela de regressão):
 summary(reg_multi)
+
 # Calcular RMSE: 
 mean(residuals(reg_multi)^2) %>% sqrt()
 
@@ -135,6 +138,7 @@ mean(residuals(reg_multi)^2) %>% sqrt()
 # Analisar média dos resíduos do modelo 1:
 resid_reg <- resid(reg)
 mean(resid_reg)
+
 # Plotar análise residual:
 ggplot(data = vote_growth, aes(y = resid_reg, x = GROWTH)) +
   geom_point(color = "lightblue") +
@@ -181,6 +185,7 @@ cor(x = vote_growth$WAR, y = vote_growth$GROWTH, method = c("pearson"))
 
 # Imprimir resultados do modelo (tabela de regressão):
 summary(reg_multi_2)
+
 # Calcular RMSE: 
 mean(residuals(reg_multi_2)^2) %>% sqrt()
 
@@ -237,7 +242,7 @@ ggplot(data = vote_growth, aes(y = resid_reg_multi_2, x = GROWTH + WAR)) +
 
 
 # Modelo 3 (GROWTH e WAR): 
-0.628 * (sd(vote_growth$GROWTH)/ sd(vote_growth$VOTE))
+0.628 * (sd(vote_growth$GROWTH) / sd(vote_growth$VOTE))
 -3.951 * (sd(vote_growth$WAR) / sd(vote_growth$VOTE))
 
 
@@ -257,24 +262,25 @@ ggplot(data = vote_growth, aes(y = resid_reg_multi_2, x = GROWTH + WAR)) +
 
 ## letra b)
 
-# A variável dependente é a "percepção temporal" dos cidadãos. Os autores 
-# buscam compreender se a língua falada influencia o apoio dos cidadãos às 
-# políticas "future-oriented". Descobrem que nas línguas "futureless" os 
-# eleitores têm uma percepção temporal diferente do que aqueles de línguas 
-# "futured"; os primeiros têm maior probabilidade de endossar as políticas de 
-# longo prazo, já que percebem o futuro como um "tempo" mais próximo do presente.
-# No primeiro estudo, os autores avaliam o impacto de uma língua "futureless" - 
-# o estoniano - e desenvolvem cinco modelos de análise, cada um com uma variável
-# dependente diferente, mas todas com o mesmo objetivo de avaliar a "percepção 
-# temporal" dos eleitores. Neste estudo, os autores esperam encontrar maior 
-# coeficiente de variação para VDs que representem percepções de longo prazo, já
-# que o estoniano, por ser uma língua "futureless", faz com que os seus falantes
-# tenham percepções menos imediatistas e mais voltadas para o futuro (e esperam
-# encontrar o efeito contrário para o russo, que é a língua "futured" avaliada
-# neste primeiro estudo). No segundo estudo os autores expandem a análise para
-# 60 países e incluem uma série de variáveis de controle, como gênero, idade,
-# educação, renda, situação empregatícia, estado civil, apoio à democracia e 
-# capital social. As línguas são classificadas em "futured" ou "futureless" de
+# A variável dependente é a "percepção temporal" e o apoio dos cidadãos a 
+# políticas "future oriented". Os autores buscam compreender se a língua falada 
+# influencia o apoio dos cidadãos às políticas "future-oriented". 
+# Descobrem que nas línguas "futureless" os eleitores têm uma percepção temporal
+# diferente do que aqueles de línguas "futured"; os primeiros têm maior 
+# probabilidade de endossar as políticas de longo prazo, já que percebem o 
+# futuro como um "tempo" mais próximo do presente.No primeiro estudo, os autores
+# avaliam o impacto de uma língua "futureless" - o estoniano - e desenvolvem 
+# cinco modelos de análise, cada um com uma variável dependente diferente, mas 
+# todas com o mesmo objetivo de avaliar a "percepção temporal" dos eleitores. 
+# Neste estudo, os autores esperam encontrar maior coeficiente de variação para 
+# VDs que representem percepções de longo prazo, já que o estoniano, por ser uma
+# língua "futureless", faz com que os seus falantes tenham percepções menos 
+# imediatistas e mais voltadas para o futuro (e esperam encontrar o efeito 
+# contrário para o russo, que é a língua "futured" avaliada neste primeiro 
+# estudo). No segundo estudo os autores expandem a análise para 60 países e 
+# incluem uma série de variáveis de controle, como gênero, idade, educação, 
+# renda, situação empregatícia, estado civil, apoio à democracia e capital 
+# social. As línguas são classificadas em "futured" ou "futureless" de
 # acordo com a teoria de "future time reference" (FTR; Chen 2013) de uma língua,
 # recebe valor 1 se fortemente "futured" e 0 se fortemente "futureless". Os 
 # autores desenvolvem seis modelos, os três primeiros têm como VD a probabilidade
@@ -282,7 +288,12 @@ ggplot(data = vote_growth, aes(y = resid_reg_multi_2, x = GROWTH + WAR)) +
 # últimos, a VD é a probabilidade de o indivíduo poupar dinheiro. Neste segundo 
 # estudo, os autores esperam um coeficiente de variação (^b) negativo para 
 # países com línguas consideradas "futured", já que postulam que os cidadãos 
-# falantes destas línguas estão mais propensos a apoiar políticas de curto prazo. 
+# falantes destas línguas estão mais propensos a apoiar políticas de curto prazo.
+# Neste estudo, como as VDs são qualitativas dicotômicas, foram utilizadas as
+# funções de ligação probit, para o primeiro estudo (com uma amostra reduzida) 
+# e logit para o segundo (com uma amostra de cerca de 60.000 respondentes); 
+# os resultados apresentados para o ^b, então, são expressos na forma de 
+# probabilidade. 
 
 ## letra c)
 
@@ -294,4 +305,3 @@ ggplot(data = vote_growth, aes(y = resid_reg_multi_2, x = GROWTH + WAR)) +
 # letra b) e o resultado que é apresentado, mais uma vez, corresponde aos 
 # postulados dos autores: o resultado do ^b para o efeito de línguas "futured" 
 # sobre o apoio a compromissos de longo prazo, mostrou-se negativo e significante. 
-
